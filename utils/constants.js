@@ -1,0 +1,79 @@
+const SUCCESS = 'SUCCESS';
+const FAIL = 'FAIL';
+exports.ROOM_CREATION_SUCCESS_MESSAGE = 'Room created successfully';
+exports.ROOM_CREATION_FAILED_MESSAGE = 'Unable to create room!';
+exports.ROOM_CREATED_SUCCESS_STATUS = SUCCESS;
+exports.ROOM_CREATED_FAIL_STATUS = FAIL;
+
+exports.FRONT_END_URL = 'http://localhost:3000';
+
+exports.ALLOWED_METHODS = ['GET', 'POST'];
+
+exports.ROOM_OPEN = 'ROOM_OPEN';
+exports.ROOM_CLOSED = 'ROOM_CLOSED';
+
+exports.JOIN_ROOM_REQ_EVENT = 'JOIN_ROOM_REQ_EVENT';
+exports.JOIN_ROOM_RES_EVENT = 'JOIN_ROOM_RES_EVENT';
+
+exports.ROOM_JOIN_FAIL_STATUS = FAIL;
+exports.ROOM_JOIN_SUCCESS_STATUS = SUCCESS;
+
+exports.ROOM_JOIN_FAIL_MESSAGE = 'Unable to join the room';
+exports.ROOM_NOT_FOUND_MESSAGE = 'No such room found';
+
+exports.ROOM_CLOSED_MESSAGE = 'Room already full';
+exports.ROOM_JOIN_SUCCESS_MESSAGE = 'Room joined successfully';
+
+exports.NEW_PLAYER_JOIN_EVENT = 'NEW_PLAYER_JOIN_EVENT';
+exports.GET_PLAYERS_IN_ROOM_EVENT = 'GET_PLAYERS_IN_ROOM_EVENT';
+
+exports.VERIFY_TOKEN_REQ_EVENT = 'VERIFY_TOKEN_REQ_EVENT';
+exports.VERIFY_TOKEN_RES_EVENT = 'VERIFY_TOKEN_RES_EVENT';
+exports.VERIFY_TOKEN_SUCCESS = SUCCESS;
+exports.VERIFY_TOKEN_FAIL = FAIL;
+
+exports.VERIFY_GAME_REQ_EVENT = 'VERIFY_GAME_REQ_EVENT';
+exports.VERIFY_GAME_RES_EVENT = 'VERIFY_GAME_RES_EVENT';
+exports.VERIFY_GAME_SUCCESS = SUCCESS;
+exports.VERIFY_GAME_FAIL = FAIL;
+
+exports.GAME_ABANDONED_EVENT = 'GAME_ABANDONED_EVENT';
+
+exports.GET_GAME_STATE_REQ = 'GET_GAME_STATE_REQ';
+exports.GET_GAME_STATE_RES = 'GET_GAME_STATE_RES';
+
+exports.INITIAL_GAME_STATE = Array(9).fill({ image: '' });
+
+exports.GAME_NOT_STARTED = 'GAME_NOT_STARTED';
+exports.GAME_IN_PROGRESS = 'GAME_IN_PROGRESS';
+exports.GAME_FINISHED = 'GAME_FINISHED';
+
+exports.GAME_STARTED_EVENT = 'GAME_STARTED_EVENT';
+
+exports.CROSS = 'X';
+exports.CIRCLE = 'O';
+
+exports.CLICK_EVENT_REQ = 'CLICK_EVENT_REQ';
+exports.CLICK_EVENT_RES = 'CLICK_EVENT_RES';
+
+exports.CHOOSE_NEXT_PLAYER_REQ = 'CHOOSE_NEXT_PLAYER_REQ';
+exports.CHOOSE_NEXT_PLAYER_RES = 'CHOOSE_NEXT_PLAYER_RES';
+
+exports.GAME_FINISHED_EVENT = 'GAME_FINISHED_EVENT';
+exports.GAME_FINISHED_RES = 'GAME_FINISHED_RES';
+
+exports.ELEMENTS_TO_COMPARE = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+
+exports.GAME_WON = 'GAME_WON';
+
+exports.GAME_TIE = 'GAME_TIE';
+exports.GAME_TIE_MESSAGE = 'Game is a tie';
