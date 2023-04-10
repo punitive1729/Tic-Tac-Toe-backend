@@ -58,4 +58,8 @@ app.get('/create', (req, res) => {
   childProcess.unref();
 });
 
+app.all('*', (req, res) => {
+  res.status(404).json({ staus: 'fail', message: 'no such route found' });
+});
+
 module.exports = app;

@@ -5,7 +5,7 @@ exports.ROOM_CREATION_FAILED_MESSAGE = 'Unable to create room!';
 exports.ROOM_CREATED_SUCCESS_STATUS = SUCCESS;
 exports.ROOM_CREATED_FAIL_STATUS = FAIL;
 
-exports.FRONT_END_URL = 'http://localhost:3000';
+exports.FRONT_END_URL = 'https://play-t3-game.netlify.app';
 
 exports.ALLOWED_METHODS = ['GET', 'POST'];
 
