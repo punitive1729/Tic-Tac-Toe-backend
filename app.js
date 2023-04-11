@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const DB = require('./db/db');
+let DB = require('./db/db');
 const { fork } = require('child_process');
 const cors = require('cors');
 
@@ -9,7 +9,6 @@ const {
   ROOM_CREATED_FAIL_STATUS,
   ROOM_CREATED_SUCCESS_STATUS,
   ROOM_OPEN,
-  INITIAL_GAME_STATE,
 } = require('./utils/constants');
 //const AppError = require('./utils/AppError');
 
@@ -48,6 +47,14 @@ app.get('/create', (req, res) => {
       registeredPlayers: new Set(),
       gameState: Array(9).fill({ image: '' }),
     };
+
+    setTimeout(
+      (data) => {
+        delete DB[data];
+      },
+      process.env.EXPIRATION_TIME,
+      data
+    );
 
     return res.status(201).json({
       status: ROOM_CREATED_SUCCESS_STATUS,
