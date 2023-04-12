@@ -50,11 +50,13 @@ app.get('/create', (req, res) => {
 
     setTimeout(
       (data) => {
-        delete DB[data];
+        if (DB[data] && DB[data].players.length === 0) delete DB[data];
       },
       process.env.EXPIRATION_TIME,
       data
     );
+
+    console.log('Created room');
 
     return res.status(201).json({
       status: ROOM_CREATED_SUCCESS_STATUS,
