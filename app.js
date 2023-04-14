@@ -18,11 +18,7 @@ const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS.split(',');
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (
-        origin != null ||
-        origin != undefined ||
-        ALLOWED_ORIGINS.includes(origin)
-      ) {
+      if (ALLOWED_ORIGINS.includes(origin)) {
         console.log(
           `Origin:${origin}, 1st : ${ALLOWED_ORIGINS[0]}, 2nd : ${ALLOWED_ORIGINS[1]}`
         );
