@@ -13,12 +13,20 @@ const {
 //const AppError = require('./utils/AppError');
 
 let timer = process.env.MIN_VALUE;
+const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS.split(',');
 
 app.use(
   cors({
-    origin: process.env.ALLOWED_ORIGINS.split(','),
+    origin: function (origin, callback) {
+      if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback('Not allowed to access..');
+      }
+    },
   })
 );
+
 app.use(express.json());
 
 app.get('/health', (req, res) => {
