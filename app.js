@@ -14,7 +14,11 @@ const {
 
 let timer = process.env.MIN_VALUE;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.ALLOWED_ORIGINS.split(','),
+  })
+);
 app.use(express.json());
 
 app.get('/health', (req, res) => {
