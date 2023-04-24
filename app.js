@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const DB = require('./db/db');
+let DB = require('./db/db');
 const { fork } = require('child_process');
 const cors = require('cors');
 
@@ -9,13 +9,27 @@ const {
   ROOM_CREATED_FAIL_STATUS,
   ROOM_CREATED_SUCCESS_STATUS,
   ROOM_OPEN,
-  INITIAL_GAME_STATE,
 } = require('./utils/constants');
 //const AppError = require('./utils/AppError');
 
 let timer = process.env.MIN_VALUE;
+const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS.split(',');
 
-app.use(cors());
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (ALLOWED_ORIGINS.includes(origin)) {
+        console.log(
+          `Origin:${origin}, 1st : ${ALLOWED_ORIGINS[0]}, 2nd : ${ALLOWED_ORIGINS[1]}`
+        );
+        callback(null, true);
+      } else {
+        callback('Not allowed to access..');
+      }
+    },
+  })
+);
+
 app.use(express.json());
 
 app.get('/health', (req, res) => {
@@ -48,6 +62,16 @@ app.get('/create', (req, res) => {
       registeredPlayers: new Set(),
       gameState: Array(9).fill({ image: '' }),
     };
+
+    setTimeout(
+      (data) => {
+        if (DB[data] && DB[data].players.length === 0) delete DB[data];
+      },
+      process.env.EXPIRATION_TIME,
+      data
+    );
+
+    console.log('Created room');
 
     return res.status(201).json({
       status: ROOM_CREATED_SUCCESS_STATUS,
