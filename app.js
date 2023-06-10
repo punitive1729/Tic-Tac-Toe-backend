@@ -19,10 +19,10 @@ app.use(
   cors({
     origin: function (origin, callback) {
       console.log(
-        'Whether allowed or not : ',
-        ALLOWED_ORIGINS.includes(origin.trim())
+        'Whether present or not : ',
+        ALLOWED_ORIGINS.includes(origin)
       );
-      if (ALLOWED_ORIGINS.includes(origin.trim())) {
+      if (ALLOWED_ORIGINS.includes(origin)) {
         callback(null, true);
       } else {
         callback();
