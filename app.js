@@ -18,13 +18,14 @@ const ALLOWED_ORIGINS = process.env.ALLOWED_ORIGINS.split(',');
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (ALLOWED_ORIGINS.includes(origin)) {
-        console.log(
-          `Origin:${origin}, 1st : ${ALLOWED_ORIGINS[0]}, 2nd : ${ALLOWED_ORIGINS[1]}`
-        );
+      console.log(
+        'Whether allowed or not : ',
+        ALLOWED_ORIGINS.includes(origin.trim())
+      );
+      if (ALLOWED_ORIGINS.includes(origin.trim())) {
         callback(null, true);
       } else {
-        callback('Not allowed to access..');
+        callback();
       }
     },
   })
