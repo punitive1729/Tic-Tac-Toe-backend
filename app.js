@@ -19,8 +19,7 @@ app.use(
   cors({
     origin: function (origin, callback) {
       console.log(
-        'Whether present or not : ',
-        ALLOWED_ORIGINS.includes(origin)
+        `${origin} Whether present or not : ${ALLOWED_ORIGINS.includes(origin)}`
       );
       if (ALLOWED_ORIGINS.includes(origin)) {
         callback(null, true);
